@@ -16,7 +16,6 @@
 
 import React, { FC, forwardRef } from 'react';
 import MTable, {
-  MTableCell,
   MTableHeader,
   MTableToolbar,
   MaterialTableProps,
@@ -97,14 +96,6 @@ const tableIcons = {
   )),
 };
 
-const useCellStyles = makeStyles<BackstageTheme>(theme => ({
-  root: {
-    color: theme.palette.grey[500],
-    padding: theme.spacing(0, 2, 0, 2.5),
-    height: '56px',
-  },
-}));
-
 const useHeaderStyles = makeStyles<BackstageTheme>(theme => ({
   header: {
     padding: theme.spacing(1, 2, 1, 2.5),
@@ -169,7 +160,6 @@ export const Table: FC<TableProps> = ({
   subtitle,
   ...props
 }) => {
-  const cellClasses = useCellStyles();
   const headerClasses = useHeaderStyles();
   const toolbarClasses = useToolbarStyles();
   const theme = useTheme<BackstageTheme>();
@@ -185,9 +175,6 @@ export const Table: FC<TableProps> = ({
   return (
     <MTable
       components={{
-        Cell: cellProps => (
-          <MTableCell className={cellClasses.root} {...cellProps} />
-        ),
         Header: headerProps => (
           <MTableHeader classes={headerClasses} {...headerProps} />
         ),
